@@ -1,14 +1,71 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+.core {
+    transition: fill 0.3s linear 0.03s;
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+.main-body {
+    fill: transparent;
+    transition: fill 0.3s linear;
+}
 
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-*/
+.contour {
+    transition: fill 0.1s linear;
+}
+
+.card__icon-button:hover .core {
+    fill: var(--accent-color, #000);
+    transition: fill 0.3s linear;
+}
+
+.card__icon-button:hover .main-body {
+    fill: var(--svg-heart-contour, #000);
+    transition: fill 0.3s 0.05s linear;
+}
+
+.card__icon-button:active .core {
+    fill: var(--svg-heart-main-body, #FF0000);
+    transition: fill 0.3s linear;
+}
+
+.card__icon-button:active .main-body {
+    fill: var(--svg-heart-main-body, #FF0000);
+    transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .core {
+    fill: var(--svg-heart-main-body, #FF0000);
+    transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+    fill: var(--svg-heart-main-body, #FF0000);
+    transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .contour {
+    fill: var(--svg-heart-main-body, #FF0000);
+    transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon.is-liked .heart {
+    animation: heart 0.3s 0.1s ease-in alternate;
+    transform-origin: center;
+}
+
+.like-icon.is-liked .sparks {
+    animation: sparks 0.3s 0.3s ease-in alternate;
+}
+
+@keyframes shaking {
+    0% { transform: translateX(0) }
+    100% { transform: translateX(4px) }
+}
+
+@keyframes heart {
+    0% { transform: scale(1) }
+    100% { transform: scale(1.5) }
+}
+
+@keyframes sparks {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
